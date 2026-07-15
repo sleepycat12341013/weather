@@ -55,19 +55,14 @@ npm run dev
 表示された `localhost` の URL をブラウザで開き、位置情報を「許可」してください。
 Open the `localhost` URL shown, and allow location access.
 
-## 🔒 セキュリティ対策 / Security
+## 🔒 セキュリティ / Security
 
-フロントエンド完結のアプリだが、公開する以上、意図しない読み込みや情報の扱いに配慮している。
-Even as a front-end-only app, once published it should control what it loads and how it handles data.
-
-- **CSP (Content Security Policy)** — `index.html` にCSPを設定し、スクリプト・画像・通信の読み込み元を自サイトと天気API（Open-Meteo）に限定。XSS・不正な外部通信・クリックジャッキング（`frame-ancestors 'none'`）を抑止。
-  Restricts scripts / images / network requests to this site and the weather API only, mitigating XSS, unauthorized external requests, and clickjacking.
-- **位置情報の扱い / Location privacy** — 取得した緯度・経度は天気APIへの問い合わせにのみ使用し、外部への送信・保存はしない。
-  The obtained latitude/longitude is used only to query the weather API — never sent elsewhere or stored.
-- **HTTPS通信 / HTTPS** — APIはHTTPSで通信。ホスティング（Vercel）もHTTPSを強制。
-  The API is called over HTTPS; hosting (Vercel) also enforces HTTPS.
-- **依存パッケージの点検 / Dependency check** — `npm audit` で既知の脆弱性を定期的に確認。
-  Regularly checks for known vulnerabilities with `npm audit`.
+- **CSP** — `index.html` でスクリプト・通信・画像の読み込み元を自サイトと Open-Meteo API に限定（XSS・クリックジャッキング対策）。
+  Limits script / connection / image sources to this site and the Open-Meteo API (XSS & clickjacking).
+- 位置情報は天気APIへの問い合わせにのみ使用し、外部送信・保存はしない。
+  Location is used only to query the weather API — not sent or stored elsewhere.
+- 依存パッケージは `npm audit` で確認（現状 0 件）。
+  Dependencies checked with `npm audit` (currently 0 issues).
 
 ## 📝 今後の拡張予定 / Roadmap
 
