@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 function App() {
 
   const [ weather, setWeather ] = useState(null)
   const [ muted, setMuted ] = useState(true)
+  const videoRef = useRef(null)
 
 
   // fetch
@@ -52,8 +53,11 @@ function App() {
       <p>Temperature: {weather? weather.temperature_2m : 'Loading...'}°C</p>
     </div>
       <div>
-        <video key={weather ? getVideo(weather.weather_code) : '/rain.mp4'} src={weather ? getVideo(weather.weather_code) : '/rain.mp4'} autoPlay loop muted={muted} playsInline />
-        <button className="sound-btn" onClick={() => setMuted(!muted)}>
+        <video ref={videoRef} key={weather ? getVideo(weather.weather_code) : '/rain.mp4'} src={weather ? getVideo(weather.weather_code) : '/rain.mp4'} autoPlay loop muted={muted} playsInline />
+        <button className="sound-btn" onClick={() => {
+          setMuted(!muted)
+          videoRef.current.play()
+        }}>
           {muted ? '🔇 Sound On' : '🔊 Sound Off'}
         </button>
       </div>
