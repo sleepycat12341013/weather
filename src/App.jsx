@@ -53,7 +53,8 @@ function App() {
       <p>Temperature: {weather? weather.temperature_2m : 'Loading...'}°C</p>
     </div>
       <div>
-        <video ref={videoRef} key={weather ? getVideo(weather.weather_code) : '/rain.mp4'} src={weather ? getVideo(weather.weather_code) : '/rain.mp4'} autoPlay loop muted={muted} playsInline />
+        {!weather && <img src="/waiting.png" alt="Waiting for weather data" className="waiting" />}
+        {weather && <video ref={videoRef} key={getVideo(weather.weather_code)} src={getVideo(weather.weather_code)} autoPlay loop muted={muted} playsInline/>}
         <button className="sound-btn" onClick={() => {
           setMuted(!muted)
           videoRef.current.play()
