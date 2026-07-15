@@ -1,5 +1,10 @@
 # Weather App 🌤️
 
+
+![Screenshot / スクリーンショット](public/screenshot.png)
+
+*※ サンプル表示です。 / Sample screen.*
+
 現在地の天気に合わせて、画面の世界そのものが変わる React 製の天気アプリ。
 天気ごとにアニメーション動画・BGM・イラストが切り替わり、雰囲気ごと体験できる。
 
@@ -7,9 +12,7 @@ A React weather app where the whole screen changes with your local weather.
 More than just a forecast — the background animation, BGM, and illustrations
 all switch depending on the weather, so you can *feel* it, not just read it.
 
-![Screenshot / スクリーンショット](public/screenshot.png)
 
-*※ サンプル表示です。 / Sample screen.*
 
 ---
 
